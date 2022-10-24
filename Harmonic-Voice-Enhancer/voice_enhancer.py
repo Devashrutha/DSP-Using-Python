@@ -60,7 +60,9 @@ class voice_enhancer():
         plt.plot(self.freqaxis,20*np.log10(self.x/len(data_array)))            #Converting the amplitude to dB
         plt.show()
         
-        ''''Setting the position of the frequency ranges of interest'''
+        '''Setting the position of the frequency ranges of interest
+        n1 to n2 and n3 to n4 are frequency ranges that are suppressed as
+        they usually contain noise and k1 to k2 are the harmonics that are amplified'''
         self.n1=int(len(self.data_fft)/sampling_rate*0.1)                      #index position for 0.1Hz
         self.n2=int(len(self.data_fft)/sampling_rate*99)                       #index position for 99Hz
         self.n3=int(len(self.data_fft)/sampling_rate*8001)                     #index position for 8001Hz
