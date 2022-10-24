@@ -57,10 +57,10 @@ class vowels():
         
         """Finding the 2nd Formant peak and its frequency"""
         plt.figure(figsize=(13.33,7.5))  
-        nor = x[k1:]/len(data_array)
-        new_freqaxis=freqaxis[k1:]
-        peak_data=find_peaks(nor,height=10,prominence=4, distance =500)
-        peak, _ = find_peaks(nor,height=10,prominence=4, distance =500) 
+        nor = x[k1:]/len(data_array)                                        #slicing the fft signal from the fundamental frequency (k1) to the end
+        new_freqaxis=freqaxis[k1:]                                          #slicing the frequency axis to match the sliced fft data
+        peak_data=find_peaks(nor,height=10,prominence=4, distance =500)     #finding the peaks in the sliced data, output is a dictionary of index, peak values and associated frequencies 
+        peak, _ = find_peaks(nor,height=10,prominence=4, distance =500)     #taking only the index data from peak_data dictionary
         sec_formant_freq = new_freqaxis[peak_data[0]]
         plt.plot(nor)
         plt.plot(peak, nor[peak], "*")
